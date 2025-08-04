@@ -1,0 +1,317 @@
+:root {
+  /* Light Theme Colors */
+  --primary: #174174;
+  --primary-light: #eaf2fa;
+  --accent: #FFCB47;
+  --border: #d4dbe3;
+  --selected: #ededf700;
+  --danger: #ca3a3a;
+  --green: #27ae60;
+  --gray: #7b818e;
+  --gray-light: #f6f6f6;
+  --background: #fff;
+  --text: #252527;
+}
+
+[data-theme="dark"] {
+  --primary: #88a6ff;
+  --primary-light: #273554;
+  --accent: #ffe199;
+  --border: #313344;
+  --selected: #22334c;
+  --danger: #e57373;
+  --green: #23d160;
+  --gray: #babfd4;
+  --gray-light: #262937;
+  --background: #191c26;
+  --text: #e4e6ec;
+}
+
+/* Universal Reset & Responsive Base */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--background);
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+.app-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--background);
+  border-radius: 16px;
+  padding: 20px;
+  min-height: 100vh;
+  box-shadow: 0 8px 24px 0 rgba(32,44,70,0.09);
+  transition: background 0.2s, color 0.2s;
+}
+
+@media (max-width: 800px) {
+  .app-container {
+    margin: 0 2vw;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    border-radius: 0;
+    padding: 6px;
+  }
+}
+
+/* Header */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 1.2px;
+  color: var(--primary);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--border);
+}
+.header-bar .emoji {
+  font-size: 2rem;
+  margin-right: 7px;
+}
+
+/* Category Tabs */
+.category-tab.selected {
+  background: var(--primary-light) !important;
+  color: var(--primary) !important;
+  border: 2px solid var(--primary);
+  font-weight: 600;
+}
+
+.category-tab {
+  font-size: 1.02rem;
+  letter-spacing: 0.2px;
+  transition: background 0.18s, color 0.18s;
+}
+
+.category-tab:focus {
+  outline: 2px solid var(--accent);
+}
+
+/* SearchBar */
+input[type="text"], input[type="search"] {
+  font-size: 1.13rem;
+  background: var(--gray-light);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  transition: background 0.14s, color 0.14s;
+}
+
+/* Veg/NonVeg Filter */
+label {
+  font-size: 1.09rem;
+}
+
+/* Dish Card */
+.dish-card-container {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--gray-light);
+  margin-bottom: 14px;
+  padding: 14px 12px;
+  transition: background 0.2s;
+  box-shadow: 0 1px 5px 0 rgba(32,44,70,0.04);
+}
+.dish-card-container.selected {
+  background: var(--selected);
+  border-color: var(--primary);
+}
+.dish-card-image {
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 15px;
+  background: var(--border);
+  border: 1.5px solid var(--gray-light);
+}
+
+.dish-card-title {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 2px;
+  font-size: 1.09rem;
+}
+
+.dish-card-desc {
+  color: var(--gray);
+  font-size: 0.98rem;
+  margin-bottom: 3px;
+}
+
+.dish-card-actions {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Add/Remove button */
+.dish-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--primary);
+  transition: background 0.14s;
+}
+.dish-btn.remove {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* Ingredients Link */
+.dish-link {
+  color: var(--primary);
+  font-size: 0.97rem;
+  margin-top: 3px;
+}
+
+.dish-tick {
+  color: var(--green);
+  margin-left: 7px;
+}
+
+/* No dishes message */
+.no-dishes {
+  margin: 30px 0;
+  text-align: center;
+  color: var(--gray);
+  font-size: 1.19rem;
+}
+
+/* Summary Footer */
+.summary-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--background);
+  border-top: 1.8px solid var(--border);
+  margin-top: 22px;
+  padding: 16px 0 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 11;
+}
+.summary-footer .summary-label {
+  font-size: 1.02rem;
+}
+.summary-footer .category-count {
+  font-size: 0.97rem;
+  margin-right: 10px;
+}
+.summary-footer .continue-btn {
+  background: var(--primary);
+  color: #fff;
+  padding: 11px 36px;
+  border-radius: 11px;
+  border: none;
+  font-weight: 600;
+  font-size: 1.03rem;
+  transition: background 0.15s;
+}
+.summary-footer .continue-btn:hover {
+  background: #3175ce;
+}
+
+/* Dark Mode Toggle */
+.darkmode-toggle {
+  font-size: 1.2rem;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 18px 6px 13px;
+  margin-left: 12px;
+  background: var(--background);
+  color: var(--text);
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.14s, color 0.14s;
+}
+
+.dish-card-container.selected {
+  background-color: var(--selected);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+  position: relative;
+}
+
+/* Toggle Switch Base */
+.single-toggle-switch {
+  position: relative;
+  width: 90px;
+  height: 34px;
+  display: inline-block;
+}
+.single-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.single-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #27ae60; /* veg green by default */
+  border-radius: 34px;
+  transition: 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+  user-select: none;
+}
+.single-slider .label {
+  z-index: 2;
+}
+.single-slider:before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+  z-index: 3;
+}
+input:checked + .single-slider {
+  background-color: #e53935; /* non-veg red */
+}
+input:checked + .single-slider:before {
+  transform: translateX(56px);
+}
+
